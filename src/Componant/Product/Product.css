@@ -1,0 +1,181 @@
+
+.item-produt{
+    font-family: Simplon Norm;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 40px;
+    text-align: left;
+   color: rgba(37, 32, 32, 1);
+}
+
+.show-filter{
+    font-family: Adobe Caslon Pro;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    margin-top: 1.7rem;
+    margin-left: 1rem;
+    gap: 10px;
+
+}
+
+.product-itm{
+     display: flex;
+     flex-direction: row;
+}
+
+.iterenal{
+    display: flex;
+    flex-direction: row;
+}
+
+.recom{
+    font-family: Simplon Norm;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 0px;
+    margin-bottom: 5rem;
+    text-align: left;
+    margin-top: 1.4rem;
+
+}
+
+.all-item{
+     display: flex; 
+      justify-content: space-around;
+      border-bottom: 2px solid rgb(246, 248, 250);
+     
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    margin-top: 10px;
+    gap: 20px; /* Adjust the gap between the cards as needed */
+}
+
+.card {
+    width: 300px;
+    height: 462px;
+    border: 1px solid #ccc; /* Optional: Add a border to the cards */
+    border-radius: 8px; /* Optional: Add rounded corners to the cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow to the cards */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+
+
+.card h4 {
+    white-space: nowrap; 
+    width: 200px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.card p {
+    font-family: Simplon Norm;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.8px;
+    text-align: left;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 1024px) {
+    .container {
+        gap: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        /* padding: 10px; */
+    }
+
+    .card {
+        /* width: 250px;
+        height: 400px; */
+    }
+
+    /* .card img {
+        height: 300px;
+    } */
+}
+
+@media screen and (max-width: 540px) {
+    .container {
+        /* gap: 15px; */
+        /* width: 100%; */
+        display: flex;
+        justify-content: space-around;
+        /* padding: 10px; */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container{
+         display: flex;
+         justify-content: space-around;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .all-item {
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .product-itm {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .recom {
+        margin-bottom: 1.2rem;
+        text-align: center;
+    }
+
+    .container {
+        gap: 10px;
+        display: grid;
+        padding: 10px;
+        /* width: 100%; */
+        grid-template-columns: repeat(2,1fr);
+        justify-content: space-between; /* Adjusts the space between the two cards */
+    }
+
+    .card {
+        width: 90%; 
+        /* height: auto; */
+    }
+
+    .card img {
+        width: 100%;
+        height: 200px;
+    }
+
+    
+    
+    .des-do{
+         width: 50%;
+
+    }
+
+    .arror{
+         display: none;
+    }
+
+    .item-produt{
+         display: none;
+    }
+    
+}
+
