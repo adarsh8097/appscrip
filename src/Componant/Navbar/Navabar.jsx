@@ -7,6 +7,10 @@ import './Navabar.css';
 import { FaBars } from "react-icons/fa";
 
 function HandleNavbar() {
+    let handleItem =()=>{
+         alert("coming soon");
+    }
+
     return (
         <div style={{borderBottom:"2px solid rgb(246, 248, 250)"}}>
         <nav className="navbar">
@@ -30,10 +34,10 @@ function HandleNavbar() {
         <div className="secondnav-item">
                 <ul>
                     <li>Shop</li>
-                    <li>Skills</li>
-                    <li>Stories</li>
-                    <li>about</li>
-                    <li>contact &nbsp; us</li>
+                    <li onClick={handleItem}>Skills</li>
+                    <li onClick={handleItem}>Stories</li>
+                    <li onClick={handleItem}>about</li>
+                    <li onClick={handleItem}>contact &nbsp; us</li>
                 </ul>
             </div>
         </div>

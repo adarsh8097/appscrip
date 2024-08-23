@@ -25,6 +25,8 @@ function HandleProduct() {
    },[]);
 
 //    console.log("ProductItem:", product);
+
+let handleItem = ["NEWEST FIRST","POPULAR","PRICE:LOW TO HIGH","PRICE: HIGH TO LOW"];
    
    return(
     <div>
@@ -44,9 +46,20 @@ function HandleProduct() {
            
         </div>
         <div>
-       <p className="recom">RECOMMENDED &nbsp; <MdKeyboardArrowDown style={{cursor:"pointer"}}/></p> 
+       {/* <p className="recom">RECOMMENDED &nbsp; <MdKeyboardArrowDown style={{cursor:"pointer"}}/></p>  */}
+       
+           <p className="recom">
+           <select>
+                <option>RECOMMEND</option>
+                {handleItem.map((d,index)=>(
+                   <option key={index} value={d} style={{padding:"10px"}}>{d}</option>
+                ))}
+            </select>
+           </p>
+      
        </div>
         </div>
+        
         <div className="container">
             {product.map((p)=>(
                 <div className="card" key={p.id}>
