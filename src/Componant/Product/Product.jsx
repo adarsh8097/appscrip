@@ -6,6 +6,10 @@ import { GoHeart } from "react-icons/go";
 
 function HandleProduct() {
     const[product,setProduct] = useState([]);
+    let [data, setIsData] = useState([]);
+    let [isfilterd,setFilterd] = useState([]);
+    let [item,setIsItem] = useState('');
+
 
     let ProductItem = async()=>{
         try{
@@ -22,12 +26,55 @@ function HandleProduct() {
     }
    useEffect(()=>{
     ProductItem();
+    
    },[]);
 
 //    console.log("ProductItem:", product);
 
-let handleItem = ["NEWEST FIRST","POPULAR","PRICE:LOW TO HIGH","PRICE: HIGH TO LOW"];
-   
+// let handleItem = ["NEWEST FIRST","POPULAR","PRICE:LOW TO HIGH","PRICE: HIGH TO LOW"];
+ 
+let filterd = async()=>{
+    try{
+
+        await fetch('https://fakestoreapi.com/products/categories')
+        .then(res=>res.json())
+        .then(json=>{
+            setIsData(json);
+            console.log(json);
+        });
+
+    }catch(error){
+        console.log(error.message);
+        
+    }
+}
+
+useEffect(()=>{
+    filterd();
+},[]);
+
+ 
+let handleCategory = async(item)=>{
+ try{
+    await fetch(`https://fakestoreapi.com/products/category/${item}`)
+    .then(res=>res.json())
+    .then(json=>{
+        setFilterd(json);
+        console.log(json);
+    });
+
+ }catch(error){
+    console.log(error);
+    
+ }
+
+}
+  useEffect(()=>{
+     handleCategory(item);
+  },[item]);
+
+  console.log("filterd",isfilterd);
+  
    return(
     <div>
         <div className="all-item">
@@ -49,10 +96,10 @@ let handleItem = ["NEWEST FIRST","POPULAR","PRICE:LOW TO HIGH","PRICE: HIGH TO L
        {/* <p className="recom">RECOMMENDED &nbsp; <MdKeyboardArrowDown style={{cursor:"pointer"}}/></p>  */}
        
            <p className="recom">
-           <select>
+           <select onChange = {(e)=> setIsItem(e.target.value)}>
                 <option>RECOMMEND</option>
-                {handleItem.map((d,index)=>(
-                   <option key={index} value={d} style={{padding:"10px"}}>{d}</option>
+                {data.map((d,index)=>(
+                   <option key={index} value={d} style={{padding:"10px",textTransform:"uppercase"}}>{d}</option>
                 ))}
             </select>
            </p>
@@ -61,18 +108,38 @@ let handleItem = ["NEWEST FIRST","POPULAR","PRICE:LOW TO HIGH","PRICE: HIGH TO L
         </div>
         
         <div className="container">
-            {product.map((p)=>(
-                <div className="card" key={p.id}>
-                    <div>
-                        <img src={p.image} alt="product-img" width="300px" height="350px"/>
-                        <h4 className="b">{p.title}</h4>
-                       <div className="" style={{display:"flex",justifyContent:"space-around"}}>
-                       <p className="des-do"><a href="#">Sign in</a> or Create an account to see pricing</p>
-                        <p style={{}}><GoHeart style={{marginTop:"-5px",fontSize:"25px",cursor:"pointer"}}/> </p>
-                       
-                        </div> </div>
-                </div>
-            ))}
+            {isfilterd?.length > 0 ? (
+            isfilterd.map((p)=>(
+                    <div className="card" key={p.id}>
+                        <div>
+                            <img src={p.image} alt="product-img" width="300px" height="350px"/>
+                            <h4 className="b">{p.title}</h4>
+                           <div className="" style={{display:"flex",justifyContent:"space-around"}}>
+                           <p className="des-do"><a href="#">Sign in</a> or Create an account to see pricing</p>
+                            <p style={{}}><GoHeart style={{marginTop:"-5px",fontSize:"25px",cursor:"pointer"}}/> </p>
+                           
+                            </div>
+                             </div>
+                    </div>
+                
+                      ))):(
+                        
+                            product.map((p)=>(
+                             
+                                 <div className="card" key={p.id}>
+                                     <div>
+                                         <img src={p.image} alt="product-img" width="300px" height="350px"/>
+                                         <h4 className="b">{p.title}</h4>
+                                        <div className="" style={{display:"flex",justifyContent:"space-around"}}>
+                                        <p className="des-do"><a href="#">Sign in</a> or Create an account to see pricing</p>
+                                         <p style={{}}><GoHeart style={{marginTop:"-5px",fontSize:"25px",cursor:"pointer"}}/> </p>
+                                        
+                                         </div>
+                                          </div>
+                                 </div>
+                
+                      )))
+                    }
         </div>
     </div>
    ); 

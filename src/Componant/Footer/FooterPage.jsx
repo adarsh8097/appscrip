@@ -36,30 +36,37 @@ function FooterPage() {
             <hr />
 
             <div className="footer-bottom-section">
-                <div className="links-section">
+                 {/* <div className="footer-bottom-item"> */}
+                 <div className="links-section">
                     <ul className="footer-list" >
                         <li className="list-title " style={{fontSize:"24px"}}>Metta Muse</li>
                         {listItem.map((item, index) => (
-                            <li key={index} style={{fontFamily:"Arial",fontSize:"18px"}}>{item}</li>
+                            <li key={index} style={{fontFamily:"Arial",fontSize:"15px"}}>{item}</li>
                         ))}
                     </ul>
                 </div>
-
-                <div className="quick-links-section">
+                 <div className="quick-links-section">
                     <ul className="footer-list" >
                         <li className="list-title"style={{fontSize:"24px"}}>Quick Links</li>
                         {quickLinks.map((item, index) => (
-                            <li key={index} style={{fontFamily:"Arial",fontSize:"18px"}}>{item}</li>
+                            <li key={index} style={{fontFamily:"Arial",fontSize:"15px"}}>{item}</li>
                         ))}
                     </ul>
+                    {/* <select className="footer-bootom-list" >
+                        <option className="list-title"style={{fontSize:"24px"}}>Quick Links</option>
+                        {quickLinks.map((item, index) => (
+                            <option key={index} style={{fontFamily:"Arial",fontSize:"18px",width:"100%"}}>{item}</option>
+                        ))}
+                    </select> */}
                 </div>
+                
 
                 <div className="social-icons">
                     <h4>Follow Us</h4>
                     <div className="icons">
-                        <FaFacebook />
-                        <FaInstagram />
-                        <FaTwitter />
+                        <FaFacebook style={{border:"1px solid #fff",borderRadius:"50%",padding:"5px"}} />
+                        <FaInstagram style={{border:"1px solid #fff",borderRadius:"50%",padding:"5px"}}/>
+                        <FaTwitter  style={{border:"1px solid #fff",borderRadius:"50%",padding:"5px"}}/>
                     </div>
                 </div>
             </div>
